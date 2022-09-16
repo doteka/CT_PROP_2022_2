@@ -5,39 +5,39 @@
 # 최초 작성일 : 2022-09-09
 # 최종 작성일 : 2022-09-16
 def init():                                     # variable init
-    str1 = ""
-    str2 = ""
+    Reference_String = ""
+    Match_String = ""
     count = 0
-    return str1, str2, count
+    return Reference_String, Match_String, count
 
-def Divide_letters(wStr, Number_Of_Char):
-    i = 0
-    str1, str2, count = init()
+def Divide_letters(words, Number_Of_Char):
+    index = 0
+    Reference_String, Match_String, count = init()
     result = ""
-    while i < len(wStr):                        
-        if str1 == "":
-            if (i+Number_Of_Char >= len(wStr)):     # prevent list out of range
-                result += wStr[i:len(wStr)]         # Paste all remaining strings
+    while index < len(words):                        
+        if Reference_String == "":
+            if (index+Number_Of_Char >= len(words)):     # prevent list out of range
+                result += words[index:len(words)]         # Paste all remaining strings
                 break
             else:
-                str1 = wStr[i:i+Number_Of_Char]     # Reference String
+                Reference_String = words[index:index+Number_Of_Char]     # Reference String
                 count = 1
-        for j in range(i+Number_Of_Char, len(wStr), Number_Of_Char):
-            str2 = wStr[j:j+Number_Of_Char]         # Match String
-            if str1 == str2:                        # If two strings are the same
+        for index2 in range(index+Number_Of_Char, len(words), Number_Of_Char):
+            Match_String = words[index2:index2+Number_Of_Char]         # Match String
+            if Reference_String == Match_String:                        # If two strings are the same
                 count += 1
             else:
                 break
         if count <= 1:                              # If you have 1 identical character
-            result += str1
+            result += Reference_String
         else:
-            tmp = str(count)
-            result += (tmp + str1)                  # Create a String to Format
-            i += ((count-1) * Number_Of_Char)       # Skip the same number of strings
+            temp_var = str(count)
+            result += (temp_var + Reference_String)                  # Create a String to Format
+            index += ((count-1) * Number_Of_Char)       # Skip the same number of strings
             
 
-        i += Number_Of_Char
-        str1, str2, count = init()
+        index += Number_Of_Char
+        Reference_String, Match_String, count = init()
         # print(result)
     
     return result      
