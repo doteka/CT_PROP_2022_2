@@ -4,23 +4,17 @@
 # 작성자 : 강동준
 # 최초 작성일 : 2022-09-19
 # 최종 작성일 : 2022-09-20
-def GCD(arr1):
-    arr = [] + arr1
-    while len(arr) != 1:
-        a = arr[0]
-        b = arr[1]
-        while b != 0:
-            temp = a % b
-            a = b
-            b = temp
-        for i in range(0, 2):
-            del arr[0]
-        arr.insert(0, a)
-    return arr[0]
+def GCD(a, b):
+    while b != 0:
+        temp = a % b
+        a = b
+        b = temp
+    return a
 
-def LCM(arr1, gcd):
+def LCM(arr1):
     arr = [] + arr1
     while len(arr) != 1:
+        gcd = GCD(arr[0], arr[1])
         lcm = int(arr[0] * arr[1] / gcd)
         for i in range(0, 2):
             del arr[0]
@@ -29,10 +23,9 @@ def LCM(arr1, gcd):
 
 def solution(arr):
     answer = 0
-    gcd = GCD(arr)
-    lcm = LCM(arr, gcd)
+    lcm = LCM(arr)
     answer = lcm
     return answer
 
-arr = [2,6,8,14]
+arr = [3,4,9,16] 
 print(solution(arr))
