@@ -4,6 +4,13 @@
 # 작성자 : 강동준
 # 최초 작성일 : 2022-09-19
 # 최종 작성일 : 2022-09-20
+
+class data():
+    def __init__(self):
+        self.value = None
+        self.Link = None
+
+
 def GCD(a, b):
     while b != 0:
         temp = a % b
